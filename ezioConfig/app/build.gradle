@@ -1,0 +1,151 @@
+plugins {
+    id 'com.android.application'
+}
+
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
+/** There are supported type:
+ * dev - code 0
+ * alpha - code 1
+ * beta - code 2
+ * no suffix - code 9 - means final production build from market.*/
+def versionType = 0
+def versionTypeName = null
+
+
+android {
+    dataBinding {
+        enabled = true
+    }
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+        applicationId "in.aerogram.eziosense.config"
+        resValue "string", "name_app", "Ezio Config"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode(versionMajor * 100000 + versionMinor * 1000 + versionPatch * 10 + versionType)
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
+        signingConfig signingConfigs.debug
+        switch (versionType) {
+            case 0:
+                versionTypeName = "dev"
+                break
+            case 1:
+                versionTypeName = "alpha"
+                break
+            case 2:
+                versionTypeName = "beta"
+                break
+            default:
+                versionTypeName = "final"
+                break
+        }
+        archivesBaseName = "Ezio_Config" + "_" + versionName + "_" + versionTypeName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
+    signingConfigs {
+        release {
+            try {
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PASSWORD
+                storeFile file(KEYSTORE_PATH)
+                storePassword KEYSTORE_PASSWORD
+            } catch (e) {
+                throw new InvalidUserDataException("You must check all the variable in the gradle.properties file.")
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+            versionNameSuffix ".debug"
+            resValue "string", "name_app", "Ezio Config_debug"
+            resValue "string", "app_version",
+                    "${defaultConfig.versionName}${versionNameSuffix}"
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "app_version",
+                    "${defaultConfig.versionName}"
+        }
+        releaseDebuggable {
+            initWith release
+            debuggable true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dynamicFeatures = [":app:onboarding"]
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
+    //Base
+    api 'androidx.appcompat:appcompat:1.3.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api "com.google.android.material:material:1.3.0"
+
+    //Test
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //CircleImageView
+    api 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Lifecycle
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    //Broadcasts Manager
+    api 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+
+    // region Google
+
+    //Location
+    api 'com.google.android.gms:play-services-location:18.0.0'
+
+    //on Demand Delivery
+    implementation 'com.google.android.play:core:1.10.0'
+
+    // endregion
+
+    // region Performance, Logs & Bug Reports
+
+    api 'com.jakewharton.timber:timber:4.7.1'
+
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
+
+    //Bug reporting
+    debugImplementation 'com.bugsee:bugsee-android:+'
+
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+
+    // endregion
+
+}

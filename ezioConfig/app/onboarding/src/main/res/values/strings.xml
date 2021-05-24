@@ -1,0 +1,8 @@
+<resources>
+    <string name="title_activity_pager">PagerActivity</string>
+    <string name="title_onboarding">PagerActivity</string>
+
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="finish">Finish</string>
+</resources>

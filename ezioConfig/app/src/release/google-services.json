@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "925197173776",
+    "project_id": "ezioconfig",
+    "storage_bucket": "ezioconfig.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925197173776:android:f0a5bc85e3919a3bdbb695",
+        "android_client_info": {
+          "package_name": "in.aerogram.eziosense.config"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925197173776-uk50m1k9h33gkn3l8e7bqtatietkmtrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXQL7icKLJSfacHmXZvloK-F-cQ5DLGCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925197173776-uk50m1k9h33gkn3l8e7bqtatietkmtrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

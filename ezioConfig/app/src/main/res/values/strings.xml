@@ -1,0 +1,15 @@
+<resources>
+    <string name="title_activity_pager">PagerActivity</string>
+
+    <string name="configure_note">
+        Make Sure the <b><u>GPS</u> is turned ON &amp; You are <u>Connected</u> to the provided Network Credentials</b> before pressing the Configure button!
+    </string>
+
+
+    <string name="esptouch_configuring_message">Configuring Device, Please wait…\n\nNote: <b>If LED stops blinking then your device is successfully connected!</b> You can press Close.</string>
+    <string name="esptouch_configure_result_failed_port">Configure Device task failed, the Device port might be busy!</string>
+    <string name="esptouch_configure_result_success_item">> BSSID = %1$s\n\n> InetAddress = %2$s</string>
+    <string name="esptouch_configure_result_success">Success</string>
+
+
+</resources>

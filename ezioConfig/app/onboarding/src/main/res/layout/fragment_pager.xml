@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fp_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="64dp">
+
+    <ImageView
+        android:id="@+id/fp_main_iv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        app:srcCompat="@drawable/ic_logo" />
+
+    <TextView
+        android:id="@+id/fp_main_text_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|start"
+        android:maxLines="2"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Top Level Desc here"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@android:color/white"
+        app:fontFamily="@font/montserrat_bold" />
+
+    <TextView
+        android:id="@+id/fp_main_text_desc_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center|start"
+        android:maxLines="2"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Top Level Desc text here"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/fp_main_text_tv"
+        app:layout_constraintStart_toStartOf="@+id/fp_main_text_tv"
+        app:layout_constraintTop_toBottomOf="@+id/fp_main_text_tv" />
+
+</LinearLayout>
